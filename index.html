@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arpit Vadhiyari | PHP Laravel Developer & Backend System Architect</title>
+    <meta name="description" content="Award-winning portfolio of Arpit Vadhiyari, an enterprise PHP Laravel Developer specializing in MVC architecture, secure REST APIs, and scalable database solutions.">
+    <meta name="keywords" content="Arpit Vadhiyari, PHP Developer, Laravel Developer, Backend Developer, MVC Architecture, AWS Cloud Engineer">
+    <meta name="author" content="Arpit Vadhiyari">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2300f3ff'/><text x='50%' y='68%' font-size='55' font-weight='900' font-family='sans-serif' text-anchor='middle' fill='%23050505'>AV</text></svg>" type="image/svg+xml">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome & Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Swiper.js & AOS Animation Libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Custom Premium Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body style="overflow-y: hidden;">
+
+    <!-- Preloader Screen -->
+    <div id="preloader">
+        <div class="loader-logo-box">
+            <span class="loader-initials">AV</span>
+        </div>
+        <h4 class="text-white mb-3 tracking-wider font-heading" style="letter-spacing: 3px;">ARPIT VADHIYARI</h4>
+        <p class="text-neon-cyan small text-uppercase fw-bold mb-4" style="letter-spacing: 4px;">PHP Laravel MVC Architect</p>
+        
+        <div class="loader-bar-container">
+            <div class="loader-bar-fill"></div>
+        </div>
+    </div>
+
+    <!-- Custom Smooth Magnetic Cursor -->
+    <style>
+        @media (pointer: fine) {
+            #cursor-dot {
+                width: 8px;
+                height: 8px;
+                background: #00f3ff;
+                border-radius: 50%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                z-index: 10000;
+                box-shadow: 0 0 10px #00f3ff;
+                transition: transform 0.05s linear, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+            }
+            #cursor-ring {
+                width: 40px;
+                height: 40px;
+                border: 1px solid rgba(0, 243, 255, 0.4);
+                border-radius: 50%;
+                position: fixed;
+                top: -16px;
+                left: -16px;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.15s ease-out, border-color 0.3s ease, transform 0.3s ease;
+                mix-blend-mode: screen;
+            }
+            #cursor-dot.hover-active {
+                background: #b026ff;
+                box-shadow: 0 0 15px #b026ff;
+                transform: scale(1.5);
+            }
+            #cursor-ring.hover-active {
+                border-color: #b026ff;
+                transform: scale(1.6);
+                background: rgba(176, 38, 255, 0.08);
+            }
+        }
+        @media (pointer: coarse) {
+            #cursor-dot, #cursor-ring { display: none !important; }
+        }
+    </style>
+    <div id="cursor-dot" class="d-none d-lg-block"></div>
+    <div id="cursor-ring" class="d-none d-lg-block"></div>
+
+    <!-- Interactive Canvas & Noise Background -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="noise-overlay"></div>
+
+    <!-- Bootstrap Glassmorphism Navbar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top navbar-glass">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#hero">
+                <div class="d-flex align-items-center justify-content-center rounded-3 px-2 py-1 glow-border-blue" style="background: rgba(0, 243, 255, 0.1);">
+                    <span class="font-heading fw-bold text-neon-blue fs-5">AV</span>
+                </div>
+                <span class="font-heading fw-bold tracking-tight text-white fs-5">ARPIT<span class="text-neon-blue">.</span></span>
+            </a>
+
+            <!-- Hamburger Toggler for Offcanvas -->
+            <button class="navbar-toggler border-0 shadow-none px-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenuOffcanvas" aria-controls="mobileMenuOffcanvas" aria-label="Toggle navigation">
+                <span class="bi bi-list fs-1 text-neon-blue"></span>
+            </button>
+
+            <!-- Desktop Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-end d-none d-lg-flex">
+                <ul class="navbar-nav align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+                    <li class="nav-item ms-3">
+                        <a href="#contact" class="btn btn-premium btn-sm px-4 py-2">Hire Me</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-end text-bg-dark glass-card border-start glow-border-blue" tabindex="-1" id="mobileMenuOffcanvas" aria-labelledby="mobileMenuOffcanvasLabel" style="width: 300px; background: rgba(5, 5, 8, 0.95) !important;">
+        <div class="offcanvas-header border-bottom border-secondary pb-3">
+            <h5 class="offcanvas-title font-heading fw-bold text-white d-flex align-items-center gap-2" id="mobileMenuOffcanvasLabel">
+                <span class="text-neon-blue">AV</span> ARPIT VADHIYARI
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between pt-4">
+            <ul class="navbar-nav flex-column gap-3 fs-5 font-heading">
+                <li class="nav-item"><a class="nav-link text-white" href="#hero" data-bs-dismiss="offcanvas">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#about" data-bs-dismiss="offcanvas">About</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#skills" data-bs-dismiss="offcanvas">Skills</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#projects" data-bs-dismiss="offcanvas">Projects</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#experience" data-bs-dismiss="offcanvas">Experience</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#services" data-bs-dismiss="offcanvas">Services</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#certificates" data-bs-dismiss="offcanvas">Certificates</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#contact" data-bs-dismiss="offcanvas">Contact</a></li>
+            </ul>
+            <div class="mt-auto pt-4 border-top border-secondary">
+                <a href="#contact" class="btn btn-premium w-100 py-3 mb-3 d-block text-center" data-bs-dismiss="offcanvas">Hire Me Now</a>
+                <div class="d-flex justify-content-around text-muted fs-4">
+                    <a href="https://github.com/arpit294" target="_blank" class="text-white hover-glow"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="text-white hover-glow"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:arpitvadhiyari@gmail.com" class="text-white hover-glow"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="hero" class="hero-section overflow-hidden">
+            <!-- Huge Transparent Background Text -->
+            <div class="hero-bg-text font-heading">BUILD CREATE DEPLOY</div>
+
+            <div class="container position-relative z-1">
+                <div class="row align-items-center gy-5">
+                    <!-- Left Side Content -->
+                    <div class="col-lg-7 hero-content text-center text-lg-start">
+                        <div class="d-inline-flex align-items-center gap-2 px-3 py-1 mb-4 rounded-pill glass-card glow-border-blue" style="padding: 6px 16px !important;">
+                            <span class="spinner-grow spinner-grow-sm text-neon-cyan" role="status"></span>
+                            <span class="text-neon-cyan small fw-bold tracking-wider">AVAILABLE FOR LARAVEL PROJECTS</span>
+                        </div>
+
+                        <h1 class="display-3 fw-bold tracking-tight mb-2 text-white">
+                            Hello, I'm <br>
+                            <span class="text-gradient font-heading" style="font-size: 1.1em;">ARPIT VADHIYARI</span>
+                        </h1>
+
+                        <!-- Typed.js Rotating Text Wrapper -->
+                        <div class="fs-3 fw-semibold mb-4 font-heading" style="min-height: 48px;">
+                            <span class="text-muted">I am a </span>
+                            <span id="typed-text" class="text-neon-blue border-bottom border-info border-2 pb-1"></span>
+                        </div>
+
+                        <p class="lead text-muted mb-5 pe-lg-5" style="font-size: 1.15rem; line-height: 1.8;">
+                            I build scalable Laravel applications, secure backend systems, responsive web interfaces, and modern database-driven solutions using <strong class="text-white">PHP, Laravel, MySQL, JavaScript, Bootstrap,</strong> and <strong class="text-white">AWS</strong>.
+                        </p>
+
+                        <!-- Hero Action Buttons -->
+                        <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                            <a href="#projects" class="btn btn-premium px-4 py-3 d-flex align-items-center gap-2">
+                                <span>View Projects</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                            <a href="#contact" class="btn btn-outline-neon px-4 py-3 d-flex align-items-center gap-2">
+                                <i class="bi bi-send-fill text-neon-blue"></i>
+                                <span>Hire Me</span>
+                            </a>
+                            <a href="#" class="btn glass-card px-4 py-3 text-white d-flex align-items-center gap-2 border-secondary" style="padding: 12px 24px !important;" onclick="alert('Resume download initialized...'); return false;">
+                                <i class="bi bi-file-earmark-arrow-down text-neon-purple"></i>
+                                <span>Download Resume</span>
+                            </a>
+                        </div>
+
+                        <!-- Mini Tech Highlights Stack -->
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-4 mt-5 pt-3 border-top border-secondary border-opacity-25">
+                            <div class="d-flex align-items-center gap-2 text-muted small">
+                                <i class="fa-brands fa-laravel text-danger fs-4"></i>
+                                <span>Laravel 12 MVC</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2 text-muted small">
+                                <i class="fa-brands fa-php text-indigo fs-4" style="color: #8892be;"></i>
+                                <span>PHP 8.3+</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2 text-muted small">
+                                <i class="bi bi-database-fill text-info fs-5"></i>
+                                <span>MySQL Eloquent</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side Interactive Illustration -->
+                    <div class="col-lg-5 hero-illustration">
+                        <div class="position-relative p-4 d-flex justify-content-center align-items-center">
+                            
+                            <!-- Ambient Glow Orbit -->
+                            <div class="position-absolute rounded-circle animate-pulse-glow" style="width: 320px; height: 320px; background: radial-gradient(circle, rgba(0,243,255,0.2) 0%, rgba(176,38,255,0.15) 60%, transparent 100%); filter: blur(40px); z-index: 0;"></div>
+
+                            <!-- Main Developer Code Mockup -->
+                            <div class="glass-card glow-border-blue p-4 position-relative z-1 w-100 shadow-lg" style="border-radius: 24px; background: rgba(10, 10, 15, 0.7);">
+                                
+                                <div class="d-flex align-items-center justify-content-between mb-3 border-bottom border-secondary pb-2">
+                                    <div class="d-flex gap-2">
+                                        <span class="rounded-circle bg-danger d-inline-block" style="width: 12px; height: 12px;"></span>
+                                        <span class="rounded-circle bg-warning d-inline-block" style="width: 12px; height: 12px;"></span>
+                                        <span class="rounded-circle bg-success d-inline-block" style="width: 12px; height: 12px;"></span>
+                                    </div>
+                                    <span class="font-code text-muted small">HomeController.php</span>
+                                    <i class="fa-brands fa-laravel text-danger fs-5"></i>
+                                </div>
+
+                                <pre class="font-code text-start mb-0 small" style="color: #d1d5db; line-height: 1.7; overflow-x: hidden;"><code class="language-php"><span class="text-neon-purple">namespace</span> App\Http\Controllers;
+
+<span class="text-neon-purple">class</span> <span class="text-warning">HomeController</span> <span class="text-neon-purple">extends</span> Controller
+{
+    <span class="text-neon-purple">public function</span> <span class="text-neon-blue">index</span>()
+    {
+        <span class="text-neon-cyan">$developer</span> = [
+            <span class="text-success">'name'</span>  => <span class="text-warning">'Arpit Vadhiyari'</span>,
+            <span class="text-success">'role'</span>  => <span class="text-warning">'PHP Laravel Developer'</span>,
+            <span class="text-success">'stack'</span> => [<span class="text-warning">'Laravel 12'</span>, <span class="text-warning">'MVC'</span>],
+            <span class="text-success">'db'</span>    => <span class="text-warning">'MySQL / Eloquent'</span>,
+        ];
+
+        <span class="text-neon-purple">return</span> view(<span class="text-warning">'portfolio.awwwards'</span>, <span class="text-neon-cyan">compact</span>(<span class="text-warning">'developer'</span>));
+    }
+}</code></pre>
+                            </div>
+
+                            <!-- Floating Technology Badges Around Illustration -->
+                            <div class="floating-code-badge position-absolute top-0 start-0 animate-float glow-border-purple d-flex align-items-center gap-2" style="z-index: 2;">
+                                <i class="fa-brands fa-laravel text-danger fs-4"></i>
+                                <span>Laravel 12 Engine</span>
+                            </div>
+
+                            <div class="floating-code-badge position-absolute bottom-0 end-0 animate-float-delayed glow-border-blue d-flex align-items-center gap-2" style="z-index: 2; margin-bottom: -15px;">
+                                <i class="fa-brands fa-aws text-warning fs-4"></i>
+                                <span>AWS Architecture</span>
+                            </div>
+
+                            <div class="floating-code-badge position-absolute top-50 end-0 translate-middle-y animate-float glow-border-blue d-flex align-items-center gap-2" style="z-index: 2; right: -20px !important;">
+                                <i class="bi bi-database-fill text-info fs-5"></i>
+                                <span>MySQL Query</span>
+                            </div>
+
+                            <div class="floating-code-badge position-absolute bottom-0 start-0 animate-float-delayed d-flex align-items-center gap-2" style="z-index: 2; margin-bottom: 20px; left: -10px !important;">
+                                <i class="bi bi-code-slash text-neon-cyan fs-5"></i>
+                                <span>REST API Ready</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Section -->
+        <section id="about" class="about-section position-relative">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                    <span class="section-badge">01 // BIOGRAPHY & MILESTONES</span>
+                    <h2 class="section-title">Architecting Digital Experiences with <span class="text-gradient">Precision</span></h2>
+                    <p class="text-muted mx-auto" style="max-width: 650px;">
+                        Merging clean backend engineering with sleek frontend aesthetics to create enterprise-ready web solutions.
+                    </p>
+                </div>
+
+                <!-- Stats Counter Row -->
+                <div class="row g-4 mb-5 pb-4 stagger-grid" data-aos="fade-up">
+                    <div class="col-6 col-md-3">
+                        <div class="glass-card text-center p-4 glow-border-blue h-100 d-flex flex-column justify-content-center">
+                            <h3 class="display-5 fw-bold text-neon-blue font-heading counter-val mb-1" data-target="15+">0</h3>
+                            <p class="text-muted small fw-semibold text-uppercase tracking-wider mb-0">Projects Completed</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="glass-card text-center p-4 glow-border-blue h-100 d-flex flex-column justify-content-center">
+                            <h3 class="display-5 fw-bold text-neon-blue font-heading counter-val mb-1" data-target="12+">0</h3>
+                            <p class="text-muted small fw-semibold text-uppercase tracking-wider mb-0">Technologies Mastered</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="glass-card text-center p-4 glow-border-blue h-100 d-flex flex-column justify-content-center">
+                            <h3 class="display-5 fw-bold text-neon-blue font-heading counter-val mb-1" data-target="1+">0</h3>
+                            <p class="text-muted small fw-semibold text-uppercase tracking-wider mb-0">Years Internship Exp.</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="glass-card text-center p-4 glow-border-blue h-100 d-flex flex-column justify-content-center">
+                            <h3 class="display-5 fw-bold text-neon-blue font-heading counter-val mb-1" data-target="100%">0</h3>
+                            <p class="text-muted small fw-semibold text-uppercase tracking-wider mb-0">Clean MVC Code</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-5 align-items-center">
+                    <!-- Left Column: Biography Glass Card -->
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="glass-card p-5 glow-border-purple position-relative overflow-hidden h-100">
+                            <div class="position-absolute top-0 end-0 p-3 opacity-10">
+                                <i class="fa-brands fa-php display-1 text-white"></i>
+                            </div>
+
+                            <span class="badge bg-purple text-white mb-3 px-3 py-2 rounded-pill font-code" style="background: rgba(176,38,255,0.2); border: 1px solid var(--neon-purple);">PHP Laravel Specialist</span>
+
+                            <h3 class="h2 fw-bold text-white mb-4">Dedicated to High-Quality Software Architecture</h3>
+
+                            <p class="text-muted mb-4" style="line-height: 1.8;">
+                                Hello! I am <strong class="text-white">Arpit Vadhiyari</strong>, an ambitious and detail-oriented software developer specializing in <strong class="text-neon-cyan">PHP 8.3+</strong> and the <strong class="text-neon-blue">Laravel 12 Framework</strong>. My engineering philosophy revolves around adherence to solid object-oriented principles, modular separation of concerns (MVC), and database query optimization.
+                            </p>
+
+                            <p class="text-muted mb-4" style="line-height: 1.8;">
+                                During my hands-on internship at <strong class="text-white">Web Expert Infotech</strong>, I successfully built complex database-driven portals, RESTful APIs, and responsive Blade user interfaces. Currently pursuing my <strong class="text-white">Master's Degree</strong>, I am expanding my horizons into cloud computing, actively learning <strong class="text-warning">AWS cloud architecture</strong> to deploy scalable, highly available web applications.
+                            </p>
+
+                            <div class="d-flex align-items-center gap-4 pt-3 border-top border-secondary border-opacity-25">
+                                <div>
+                                    <span class="text-muted small d-block">Core Focus</span>
+                                    <strong class="text-white">Backend Systems & APIs</strong>
+                                </div>
+                                <div>
+                                    <span class="text-muted small d-block">Current Status</span>
+                                    <span class="text-neon-green fw-bold"><i class="bi bi-circle-fill text-success small me-1"></i> Open for Opportunities</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Education & Journey Timeline -->
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <h3 class="h4 font-heading fw-bold text-white mb-4 d-flex align-items-center gap-2">
+                            <i class="bi bi-compass-fill text-neon-blue"></i> Academic & Professional Timeline
+                        </h3>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot">
+                                    <i class="bi bi-mortarboard-fill small"></i>
+                                </div>
+                                <div class="glass-card p-4 glow-border-blue">
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                                        <span class="text-neon-cyan small font-code fw-bold">2021 - 2024</span>
+                                        <span class="badge rounded-pill bg-dark border border-info small px-3 py-1">Degree Completed</span>
+                                    </div>
+                                    <h4 class="h5 fw-bold text-white mb-1">BSc IT (Bachelor of Science in Information Technology)</h4>
+                                    <h5 class="small text-neon-purple fw-semibold mb-3">University Graduate</h5>
+                                    <p class="text-muted small mb-0">Built strong foundational knowledge in data structures, algorithms, database systems, object-oriented programming, and web development technologies.</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-dot">
+                                    <i class="bi bi-briefcase-fill small"></i>
+                                </div>
+                                <div class="glass-card p-4 glow-border-blue">
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                                        <span class="text-neon-cyan small font-code fw-bold">2024</span>
+                                        <span class="badge rounded-pill bg-dark border border-info small px-3 py-1">Industry Experience</span>
+                                    </div>
+                                    <h4 class="h5 fw-bold text-white mb-1">PHP Laravel Intern</h4>
+                                    <h5 class="small text-neon-purple fw-semibold mb-3">Web Expert Infotech</h5>
+                                    <p class="text-muted small mb-0">Worked extensively on real-world enterprise web applications. Designed complex database architectures, built RESTful APIs, implemented secure authentication, and mastered Laravel MVC principles.</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-dot">
+                                    <i class="bi bi-laptop small"></i>
+                                </div>
+                                <div class="glass-card p-4 glow-border-blue">
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                                        <span class="text-neon-cyan small font-code fw-bold">Present</span>
+                                        <span class="badge rounded-pill bg-dark border border-info small px-3 py-1">Active Learning</span>
+                                    </div>
+                                    <h4 class="h5 fw-bold text-white mb-1">Master's Student & Specialized Laravel Developer</h4>
+                                    <h5 class="small text-neon-purple fw-semibold mb-3">Advanced Computing</h5>
+                                    <p class="text-muted small mb-0">Deepening technical expertise while developing high-concurrency backend applications, modular software design patterns, and high-performance APIs.</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-dot">
+                                    <i class="bi bi-cloud-check-fill small"></i>
+                                </div>
+                                <div class="glass-card p-4 glow-border-blue">
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                                        <span class="text-neon-cyan small font-code fw-bold">Learning Path</span>
+                                        <span class="badge rounded-pill bg-dark border border-info small px-3 py-1">Cloud Horizon</span>
+                                    </div>
+                                    <h4 class="h5 fw-bold text-white mb-1">Future Cloud Engineer (AWS)</h4>
+                                    <h5 class="small text-neon-purple fw-semibold mb-3">Self-Paced & Cloud Certifications</h5>
+                                    <p class="text-muted small mb-0">Currently mastering AWS architecture (EC2, S3, RDS, IAM, CloudFront) to deploy, scale, and manage fault-tolerant enterprise web applications in cloud environments.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Skills Section -->
+        <section id="skills" class="skills-section position-relative">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                    <span class="section-badge">02 // TECHNICAL PROFICIENCY</span>
+                    <h2 class="section-title">Mastered Stack & <span class="text-gradient">Engineering Tools</span></h2>
+                    <p class="text-muted mx-auto" style="max-width: 650px;">
+                        Strictly architected around high-performance PHP, modern Laravel MVC conventions, normalized databases, and clean UI components.
+                    </p>
+                </div>
+
+                <div class="row g-4 stagger-grid">
+                    <!-- Frontend Architecture -->
+                    <div class="col-lg-6" data-aos="fade-up">
+                        <div class="glass-card p-4 glow-border-blue h-100">
+                            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-secondary pb-3">
+                                <h3 class="h5 fw-bold font-heading text-white mb-0 d-flex align-items-center gap-2">
+                                    <i class="bi bi-window-desktop text-neon-cyan fs-4"></i>
+                                    Frontend Architecture
+                                </h3>
+                                <span class="badge bg-dark border border-secondary text-muted font-code">5 Core Skills</span>
+                            </div>
+
+                            <div class="d-flex flex-column gap-4">
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-html5 text-danger fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">HTML5</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">95%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 95%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-css3-alt text-primary fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">CSS3 & Responsive Design</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">90%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-bootstrap text-purple fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Bootstrap 5.3</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">95%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 95%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-js text-warning fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">JavaScript (Vanilla & ES6+)</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">88%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 88%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-magic text-info fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">GSAP & AOS Animations</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">85%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 85%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Architecture -->
+                    <div class="col-lg-6" data-aos="fade-up">
+                        <div class="glass-card p-4 glow-border-blue h-100">
+                            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-secondary pb-3">
+                                <h3 class="h5 fw-bold font-heading text-white mb-0 d-flex align-items-center gap-2">
+                                    <i class="bi bi-cpu-fill text-neon-purple fs-4"></i>
+                                    Backend Architecture
+                                </h3>
+                                <span class="badge bg-dark border border-secondary text-muted font-code">5 Core Skills</span>
+                            </div>
+
+                            <div class="d-flex flex-column gap-4">
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-php text-indigo fs-5" style="color: #8892be;"></i>
+                                            <span class="fw-semibold text-white font-body">PHP 8.3+</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">95%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 95%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-laravel text-danger fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Laravel 12 MVC</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">96%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 96%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-gear-wide-connected text-success fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">RESTful API Architecture</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">92%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 92%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-shield-lock-fill text-warning fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Authentication & Guard Security</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">90%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-file-earmark-code-fill text-danger fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Blade Template Components</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">95%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 95%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Architecture -->
+                    <div class="col-lg-6" data-aos="fade-up">
+                        <div class="glass-card p-4 glow-border-blue h-100">
+                            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-secondary pb-3">
+                                <h3 class="h5 fw-bold font-heading text-white mb-0 d-flex align-items-center gap-2">
+                                    <i class="bi bi-server text-neon-blue fs-4"></i>
+                                    Database Architecture
+                                </h3>
+                                <span class="badge bg-dark border border-secondary text-muted font-code">4 Core Skills</span>
+                            </div>
+
+                            <div class="d-flex flex-column gap-4">
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-database-fill text-info fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">MySQL Architecture</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">92%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 92%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-diagram-3-fill text-danger fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Eloquent ORM & Relationships</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">95%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 95%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-terminal-fill text-primary fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Laravel Query Builder</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">90%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-cpu-fill text-warning fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Database Indexing & Normalization</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">88%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 88%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Cloud -->
+                    <div class="col-lg-6" data-aos="fade-up">
+                        <div class="glass-card p-4 glow-border-blue h-100">
+                            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-secondary pb-3">
+                                <h3 class="h5 fw-bold font-heading text-white mb-0 d-flex align-items-center gap-2">
+                                    <i class="bi bi-tools text-warning fs-4"></i>
+                                    Tools & Cloud Architecture
+                                </h3>
+                                <span class="badge bg-dark border border-secondary text-muted font-code">6 Core Skills</span>
+                            </div>
+
+                            <div class="d-flex flex-column gap-4">
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-github text-light fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Git & GitHub Version Control</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">92%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 92%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-code-slash text-primary fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">VS Code & PHP Debugging</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">96%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 96%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-box-seam-fill text-warning fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Composer & Package Mgmt</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">94%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 94%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-send-check-fill text-orange fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Postman API Testing</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">90%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-hdd-network-fill text-info fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">Laragon Dev Environment</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">95%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 95%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-item">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-aws text-warning fs-5"></i>
+                                            <span class="fw-semibold text-white font-body">AWS EC2, S3 & IAM (Basics)</span>
+                                        </div>
+                                        <span class="font-code text-neon-blue fw-bold small">78%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 78%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); border-radius: 10px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Projects Section -->
+        <section id="projects" class="projects-section position-relative">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="text-center mb-5 pb-2" data-aos="fade-up">
+                    <span class="section-badge">03 // FEATURED WORK</span>
+                    <h2 class="section-title">Production-Grade <span class="text-gradient">Laravel Systems</span></h2>
+                    <p class="text-muted mx-auto" style="max-width: 650px;">
+                        Explore robust backend architectures, high-performance database algorithms, and full-stack solutions built with Laravel MVC.
+                    </p>
+
+                    <!-- Filter Buttons -->
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                        <button class="filter-btn active" data-filter="all">All Systems</button>
+                        <button class="filter-btn" data-filter="enterprise">Enterprise Portals</button>
+                        <button class="filter-btn" data-filter="backend">Backend Engines</button>
+                        <button class="filter-btn" data-filter="fullstack">Fullstack CMS</button>
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="row g-4 stagger-grid">
+                    <!-- Project 1 -->
+                    <div class="col-lg-4 col-md-6 project-item" data-category="enterprise">
+                        <div class="glass-card p-0 glow-border-blue h-100 d-flex flex-column overflow-hidden">
+                            <div class="position-relative overflow-hidden" style="height: 220px;">
+                                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Society Management System" class="w-100 h-100 object-fit-cover" style="transition: transform 0.6s ease;">
+                                <div class="position-absolute top-0 end-0 m-3 z-1">
+                                    <span class="badge bg-dark border border-info text-neon-cyan font-code px-3 py-1 text-uppercase">enterprise</span>
+                                </div>
+                                <div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 hover-overlay" style="transition: opacity 0.3s ease;">
+                                    <button type="button" class="btn btn-premium rounded-pill px-4 py-2" data-bs-toggle="modal" data-bs-target="#projectModal1">
+                                        <i class="bi bi-eye-fill me-1"></i> Preview System
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4 d-flex flex-column flex-grow-1">
+                                <h3 class="h5 fw-bold text-white font-heading mb-2">Society Management System</h3>
+                                <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">
+                                    A comprehensive enterprise housing society portal featuring automated monthly maintenance billing, resident import/export tools, notice boards, digital complaints processing, and robust role-based access controls.
+                                </p>
+                                <div class="d-flex flex-wrap gap-1 mb-4">
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Laravel 12</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">PHP 8.3</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">MySQL</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Bootstrap 5</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Eloquent ORM</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">AJAX</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-25 mt-auto">
+                                    <button type="button" class="btn btn-sm btn-outline-neon px-3 py-1 rounded-pill" data-bs-toggle="modal" data-bs-target="#projectModal1">
+                                        Architecture Details
+                                    </button>
+                                    <div class="d-flex gap-2">
+                                        <a href="https://github.com/arpit294/society-management" target="_blank" class="btn btn-sm glass-card text-white p-2 d-flex align-items-center justify-content-center rounded-circle" style="width: 36px; height: 36px;" title="View Source on GitHub">
+                                            <i class="fa-brands fa-github fs-6"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="col-lg-4 col-md-6 project-item" data-category="backend">
+                        <div class="glass-card p-0 glow-border-blue h-100 d-flex flex-column overflow-hidden">
+                            <div class="position-relative overflow-hidden" style="height: 220px;">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Resident Import Export Engine" class="w-100 h-100 object-fit-cover" style="transition: transform 0.6s ease;">
+                                <div class="position-absolute top-0 end-0 m-3 z-1">
+                                    <span class="badge bg-dark border border-info text-neon-cyan font-code px-3 py-1 text-uppercase">backend</span>
+                                </div>
+                                <div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 hover-overlay" style="transition: opacity 0.3s ease;">
+                                    <button type="button" class="btn btn-premium rounded-pill px-4 py-2" data-bs-toggle="modal" data-bs-target="#projectModal2">
+                                        <i class="bi bi-eye-fill me-1"></i> Preview System
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4 d-flex flex-column flex-grow-1">
+                                <h3 class="h5 fw-bold text-white font-heading mb-2">Resident Import Export Engine</h3>
+                                <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">
+                                    High-throughput data processing engine built with Laravel for parsing, sanitizing, validating, and importing thousands of resident records from CSV/XLSX spreadsheets in seconds with zero memory overflow.
+                                </p>
+                                <div class="d-flex flex-wrap gap-1 mb-4">
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Laravel Queues</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Chunked Processing</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">MySQL Transactions</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Bootstrap UI</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-25 mt-auto">
+                                    <button type="button" class="btn btn-sm btn-outline-neon px-3 py-1 rounded-pill" data-bs-toggle="modal" data-bs-target="#projectModal2">
+                                        Architecture Details
+                                    </button>
+                                    <div class="d-flex gap-2">
+                                        <a href="https://github.com/arpit294/resident-engine" target="_blank" class="btn btn-sm glass-card text-white p-2 d-flex align-items-center justify-content-center rounded-circle" style="width: 36px; height: 36px;" title="View Source on GitHub">
+                                            <i class="fa-brands fa-github fs-6"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="col-lg-4 col-md-6 project-item" data-category="enterprise">
+                        <div class="glass-card p-0 glow-border-blue h-100 d-flex flex-column overflow-hidden">
+                            <div class="position-relative overflow-hidden" style="height: 220px;">
+                                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Maintenance Billing System" class="w-100 h-100 object-fit-cover" style="transition: transform 0.6s ease;">
+                                <div class="position-absolute top-0 end-0 m-3 z-1">
+                                    <span class="badge bg-dark border border-info text-neon-cyan font-code px-3 py-1 text-uppercase">enterprise</span>
+                                </div>
+                                <div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 hover-overlay" style="transition: opacity 0.3s ease;">
+                                    <button type="button" class="btn btn-premium rounded-pill px-4 py-2" data-bs-toggle="modal" data-bs-target="#projectModal3">
+                                        <i class="bi bi-eye-fill me-1"></i> Preview System
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4 d-flex flex-column flex-grow-1">
+                                <h3 class="h5 fw-bold text-white font-heading mb-2">Maintenance Billing System</h3>
+                                <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">
+                                    Automated financial engine designed for residential complex accounting. Generates invoices, tracks late payment penalties, handles multiple payment gateways, and generates monthly balance sheet PDFs.
+                                </p>
+                                <div class="d-flex flex-wrap gap-1 mb-4">
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Laravel MVC</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">DomPDF</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">MySQL</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Payment API</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Vanilla JS</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-25 mt-auto">
+                                    <button type="button" class="btn btn-sm btn-outline-neon px-3 py-1 rounded-pill" data-bs-toggle="modal" data-bs-target="#projectModal3">
+                                        Architecture Details
+                                    </button>
+                                    <div class="d-flex gap-2">
+                                        <a href="https://github.com/arpit294/maintenance-billing" target="_blank" class="btn btn-sm glass-card text-white p-2 d-flex align-items-center justify-content-center rounded-circle" style="width: 36px; height: 36px;" title="View Source on GitHub">
+                                            <i class="fa-brands fa-github fs-6"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="col-lg-4 col-md-6 project-item" data-category="backend">
+                        <div class="glass-card p-0 glow-border-blue h-100 d-flex flex-column overflow-hidden">
+                            <div class="position-relative overflow-hidden" style="height: 220px;">
+                                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Role Permission Management Core" class="w-100 h-100 object-fit-cover" style="transition: transform 0.6s ease;">
+                                <div class="position-absolute top-0 end-0 m-3 z-1">
+                                    <span class="badge bg-dark border border-info text-neon-cyan font-code px-3 py-1 text-uppercase">backend</span>
+                                </div>
+                                <div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 hover-overlay" style="transition: opacity 0.3s ease;">
+                                    <button type="button" class="btn btn-premium rounded-pill px-4 py-2" data-bs-toggle="modal" data-bs-target="#projectModal4">
+                                        <i class="bi bi-eye-fill me-1"></i> Preview System
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4 d-flex flex-column flex-grow-1">
+                                <h3 class="h5 fw-bold text-white font-heading mb-2">Role Permission Management Core</h3>
+                                <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">
+                                    Granular Access Control List (ACL) security framework for Laravel applications. Allows dynamic role assigning, custom permission flags, middleware route interception, and secure session management.
+                                </p>
+                                <div class="d-flex flex-wrap gap-1 mb-4">
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Laravel Gates</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Custom Middleware</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">PHP 8.3 Security</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Bootstrap 5</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-25 mt-auto">
+                                    <button type="button" class="btn btn-sm btn-outline-neon px-3 py-1 rounded-pill" data-bs-toggle="modal" data-bs-target="#projectModal4">
+                                        Architecture Details
+                                    </button>
+                                    <div class="d-flex gap-2">
+                                        <a href="https://github.com/arpit294/role-permission-core" target="_blank" class="btn btn-sm glass-card text-white p-2 d-flex align-items-center justify-content-center rounded-circle" style="width: 36px; height: 36px;" title="View Source on GitHub">
+                                            <i class="fa-brands fa-github fs-6"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="col-lg-4 col-md-6 project-item" data-category="fullstack">
+                        <div class="glass-card p-0 glow-border-blue h-100 d-flex flex-column overflow-hidden">
+                            <div class="position-relative overflow-hidden" style="height: 220px;">
+                                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" alt="Modern Laravel Blog & CMS" class="w-100 h-100 object-fit-cover" style="transition: transform 0.6s ease;">
+                                <div class="position-absolute top-0 end-0 m-3 z-1">
+                                    <span class="badge bg-dark border border-info text-neon-cyan font-code px-3 py-1 text-uppercase">fullstack</span>
+                                </div>
+                                <div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 hover-overlay" style="transition: opacity 0.3s ease;">
+                                    <button type="button" class="btn btn-premium rounded-pill px-4 py-2" data-bs-toggle="modal" data-bs-target="#projectModal5">
+                                        <i class="bi bi-eye-fill me-1"></i> Preview System
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4 d-flex flex-column flex-grow-1">
+                                <h3 class="h5 fw-bold text-white font-heading mb-2">Modern Laravel Blog & CMS</h3>
+                                <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">
+                                    An ultra-fast content management system and developer publication platform featuring SEO-friendly slug routes, markdown editing, comment threads, category filtering, and image optimization.
+                                </p>
+                                <div class="d-flex flex-wrap gap-1 mb-4">
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Laravel 12</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Blade Components</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">SEO Meta Tags</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">Bootstrap 5</span>
+                                    <span class="badge bg-dark border border-secondary text-muted font-code small">GSAP</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-25 mt-auto">
+                                    <button type="button" class="btn btn-sm btn-outline-neon px-3 py-1 rounded-pill" data-bs-toggle="modal" data-bs-target="#projectModal5">
+                                        Architecture Details
+                                    </button>
+                                    <div class="d-flex gap-2">
+                                        <a href="https://github.com/arpit294/laravel-blog-cms" target="_blank" class="btn btn-sm glass-card text-white p-2 d-flex align-items-center justify-content-center rounded-circle" style="width: 36px; height: 36px;" title="View Source on GitHub">
+                                            <i class="fa-brands fa-github fs-6"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animated Modals for Project Specifications -->
+                <!-- Modal 1 -->
+                <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModalLabel1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content glass-card glow-border-purple text-white border-0 p-3" style="background: rgba(8, 8, 12, 0.98) !important;">
+                            <div class="modal-header border-bottom border-secondary pb-3">
+                                <h4 class="modal-title font-heading fw-bold d-flex align-items-center gap-2" id="projectModalLabel1">
+                                    <i class="fa-brands fa-laravel text-danger"></i> Society Management System
+                                </h4>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-4">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-lg-6">
+                                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 border border-secondary shadow" alt="Society Management System">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="text-neon-cyan font-heading fw-bold mb-3">System Overview</h5>
+                                        <p class="text-muted small mb-4" style="line-height: 1.7;">A comprehensive enterprise housing society portal featuring automated monthly maintenance billing, resident import/export tools, notice boards, digital complaints processing, and robust role-based access controls.</p>
+                                        
+                                        <h6 class="text-white font-heading fw-bold mb-2">Key Architectural Features:</h6>
+                                        <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Automated Monthly Maintenance Billing & Receipts Generator</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Bulk Resident Data Import & Excel Export Operations</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Multi-Role Gate Permission Management (Admin, Secretary, Resident)</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Real-time Complaint Ticket Tracking & Resolution workflow</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-3 border-top border-secondary d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge bg-purple text-white font-code">Laravel 12</span>
+                                        <span class="badge bg-purple text-white font-code">PHP 8.3</span>
+                                        <span class="badge bg-purple text-white font-code">MySQL</span>
+                                        <span class="badge bg-purple text-white font-code">Bootstrap 5</span>
+                                        <span class="badge bg-purple text-white font-code">Eloquent ORM</span>
+                                        <span class="badge bg-purple text-white font-code">AJAX</span>
+                                    </div>
+                                    <div class="d-flex gap-3">
+                                        <a href="https://github.com/arpit294/society-management" target="_blank" class="btn btn-premium px-4 py-2 d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-github"></i> Source Code repository
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal 2 -->
+                <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModalLabel2" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content glass-card glow-border-purple text-white border-0 p-3" style="background: rgba(8, 8, 12, 0.98) !important;">
+                            <div class="modal-header border-bottom border-secondary pb-3">
+                                <h4 class="modal-title font-heading fw-bold d-flex align-items-center gap-2" id="projectModalLabel2">
+                                    <i class="fa-brands fa-laravel text-danger"></i> Resident Import Export Engine
+                                </h4>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-4">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-lg-6">
+                                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 border border-secondary shadow" alt="Resident Import Export Engine">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="text-neon-cyan font-heading fw-bold mb-3">System Overview</h5>
+                                        <p class="text-muted small mb-4" style="line-height: 1.7;">High-throughput data processing engine built with Laravel for parsing, sanitizing, validating, and importing thousands of resident records from CSV/XLSX spreadsheets in seconds with zero memory overflow.</p>
+                                        
+                                        <h6 class="text-white font-heading fw-bold mb-2">Key Architectural Features:</h6>
+                                        <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Memory-optimized spreadsheet streaming & validation</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Automatic row-level error reporting and rollback protection</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Instant CSV export with custom dynamic column selection</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-3 border-top border-secondary d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge bg-purple text-white font-code">Laravel Queues</span>
+                                        <span class="badge bg-purple text-white font-code">Chunked Processing</span>
+                                        <span class="badge bg-purple text-white font-code">MySQL Transactions</span>
+                                        <span class="badge bg-purple text-white font-code">Bootstrap UI</span>
+                                    </div>
+                                    <div class="d-flex gap-3">
+                                        <a href="https://github.com/arpit294/resident-engine" target="_blank" class="btn btn-premium px-4 py-2 d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-github"></i> Source Code repository
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal 3 -->
+                <div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModalLabel3" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content glass-card glow-border-purple text-white border-0 p-3" style="background: rgba(8, 8, 12, 0.98) !important;">
+                            <div class="modal-header border-bottom border-secondary pb-3">
+                                <h4 class="modal-title font-heading fw-bold d-flex align-items-center gap-2" id="projectModalLabel3">
+                                    <i class="fa-brands fa-laravel text-danger"></i> Maintenance Billing System
+                                </h4>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-4">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-lg-6">
+                                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 border border-secondary shadow" alt="Maintenance Billing System">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="text-neon-cyan font-heading fw-bold mb-3">System Overview</h5>
+                                        <p class="text-muted small mb-4" style="line-height: 1.7;">Automated financial engine designed for residential complex accounting. Generates invoices, tracks late payment penalties, handles multiple payment gateways, and generates monthly balance sheet PDFs.</p>
+                                        
+                                        <h6 class="text-white font-heading fw-bold mb-2">Key Architectural Features:</h6>
+                                        <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Dynamic invoice calculation based on square footage or flat tier</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Automated overdue penalty processing with scheduled email alerts</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Audit logs for every transaction and receipt printout</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-3 border-top border-secondary d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge bg-purple text-white font-code">Laravel MVC</span>
+                                        <span class="badge bg-purple text-white font-code">DomPDF</span>
+                                        <span class="badge bg-purple text-white font-code">MySQL</span>
+                                        <span class="badge bg-purple text-white font-code">Payment API</span>
+                                        <span class="badge bg-purple text-white font-code">Vanilla JS</span>
+                                    </div>
+                                    <div class="d-flex gap-3">
+                                        <a href="https://github.com/arpit294/maintenance-billing" target="_blank" class="btn btn-premium px-4 py-2 d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-github"></i> Source Code repository
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal 4 -->
+                <div class="modal fade" id="projectModal4" tabindex="-1" aria-labelledby="projectModalLabel4" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content glass-card glow-border-purple text-white border-0 p-3" style="background: rgba(8, 8, 12, 0.98) !important;">
+                            <div class="modal-header border-bottom border-secondary pb-3">
+                                <h4 class="modal-title font-heading fw-bold d-flex align-items-center gap-2" id="projectModalLabel4">
+                                    <i class="fa-brands fa-laravel text-danger"></i> Role Permission Management Core
+                                </h4>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-4">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-lg-6">
+                                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 border border-secondary shadow" alt="Role Permission Management Core">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="text-neon-cyan font-heading fw-bold mb-3">System Overview</h5>
+                                        <p class="text-muted small mb-4" style="line-height: 1.7;">Granular Access Control List (ACL) security framework for Laravel applications. Allows dynamic role assigning, custom permission flags, middleware route interception, and secure session management.</p>
+                                        
+                                        <h6 class="text-white font-heading fw-bold mb-2">Key Architectural Features:</h6>
+                                        <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Dynamic UI matrix for assigning granular permissions to roles</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Zero latency caching layer for permission verification checks</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Immune to privilege escalation and CSRF vulnerabilities</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-3 border-top border-secondary d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge bg-purple text-white font-code">Laravel Gates</span>
+                                        <span class="badge bg-purple text-white font-code">Custom Middleware</span>
+                                        <span class="badge bg-purple text-white font-code">PHP 8.3 Security</span>
+                                        <span class="badge bg-purple text-white font-code">Bootstrap 5</span>
+                                    </div>
+                                    <div class="d-flex gap-3">
+                                        <a href="https://github.com/arpit294/role-permission-core" target="_blank" class="btn btn-premium px-4 py-2 d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-github"></i> Source Code repository
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal 5 -->
+                <div class="modal fade" id="projectModal5" tabindex="-1" aria-labelledby="projectModalLabel5" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content glass-card glow-border-purple text-white border-0 p-3" style="background: rgba(8, 8, 12, 0.98) !important;">
+                            <div class="modal-header border-bottom border-secondary pb-3">
+                                <h4 class="modal-title font-heading fw-bold d-flex align-items-center gap-2" id="projectModalLabel5">
+                                    <i class="fa-brands fa-laravel text-danger"></i> Modern Laravel Blog & CMS
+                                </h4>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-4">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-lg-6">
+                                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 border border-secondary shadow" alt="Modern Laravel Blog & CMS">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="text-neon-cyan font-heading fw-bold mb-3">System Overview</h5>
+                                        <p class="text-muted small mb-4" style="line-height: 1.7;">An ultra-fast content management system and developer publication platform featuring SEO-friendly slug routes, markdown editing, comment threads, category filtering, and image optimization.</p>
+                                        
+                                        <h6 class="text-white font-heading fw-bold mb-2">Key Architectural Features:</h6>
+                                        <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Clean syntax-highlighted code sharing blocks for tutorials</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Automated sitemap generation & search engine optimization</span></li>
+                                            <li class="d-flex align-items-start gap-2 small text-muted"><i class="bi bi-check2-circle text-neon-blue mt-1"></i><span>Interactive reader comment moderation portal</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-3 border-top border-secondary d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge bg-purple text-white font-code">Laravel 12</span>
+                                        <span class="badge bg-purple text-white font-code">Blade Components</span>
+                                        <span class="badge bg-purple text-white font-code">SEO Meta Tags</span>
+                                        <span class="badge bg-purple text-white font-code">Bootstrap 5</span>
+                                        <span class="badge bg-purple text-white font-code">GSAP</span>
+                                    </div>
+                                    <div class="d-flex gap-3">
+                                        <a href="https://github.com/arpit294/laravel-blog-cms" target="_blank" class="btn btn-premium px-4 py-2 d-flex align-items-center gap-2">
+                                            <i class="fa-brands fa-github"></i> Source Code repository
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. Experience Section -->
+        <section id="experience" class="experience-section position-relative">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                    <span class="section-badge">04 // CAREER TRAJECTORY</span>
+                    <h2 class="section-title">Industry <span class="text-gradient">Experience</span></h2>
+                    <p class="text-muted mx-auto" style="max-width: 650px;">
+                        Proven track record delivering scalable full-stack Laravel solutions within agile development pipelines.
+                    </p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="timeline">
+                            <div class="timeline-item" data-aos="fade-left">
+                                <div class="timeline-dot" style="top: 10px; width: 36px; height: 36px; left: -43px;">
+                                    <i class="bi bi-building-fill text-neon-blue fs-6"></i>
+                                </div>
+
+                                <div class="glass-card p-5 glow-border-purple position-relative overflow-hidden">
+                                    <div class="position-absolute top-0 end-0 p-4 opacity-10 d-none d-md-block">
+                                        <i class="fa-brands fa-laravel display-2 text-danger"></i>
+                                    </div>
+
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3 border-bottom border-secondary pb-3">
+                                        <div>
+                                            <h3 class="h4 fw-bold text-white font-heading mb-1">PHP Laravel Intern</h3>
+                                            <h4 class="h5 text-neon-cyan mb-0 fw-semibold">Web Expert Infotech</h4>
+                                        </div>
+                                        <div class="text-md-end">
+                                            <span class="badge bg-dark border border-info text-neon-blue font-code px-3 py-2 mb-1">2024</span>
+                                            <div class="small text-muted font-code">On-Site / Hybrid Dev Lab</div>
+                                        </div>
+                                    </div>
+
+                                    <h5 class="small text-white font-heading text-uppercase tracking-wider mb-3">Key Responsibilities & Deliverables:</h5>
+
+                                    <ul class="list-unstyled row g-3 mb-4">
+                                        <li class="col-md-6 d-flex align-items-start gap-2">
+                                            <i class="bi bi-caret-right-fill text-neon-purple mt-1"></i>
+                                            <span class="text-muted small" style="line-height: 1.6;">Developed robust modular backend APIs and full-stack web solutions adhering to strict Laravel MVC architectural guidelines.</span>
+                                        </li>
+                                        <li class="col-md-6 d-flex align-items-start gap-2">
+                                            <i class="bi bi-caret-right-fill text-neon-purple mt-1"></i>
+                                            <span class="text-muted small" style="line-height: 1.6;">Implemented secure authentication, authorization, and multi-guard session management for production web systems.</span>
+                                        </li>
+                                        <li class="col-md-6 d-flex align-items-start gap-2">
+                                            <i class="bi bi-caret-right-fill text-neon-purple mt-1"></i>
+                                            <span class="text-muted small" style="line-height: 1.6;">Engineered reusable Blade components and responsive Bootstrap interfaces ensuring seamless cross-browser display.</span>
+                                        </li>
+                                        <li class="col-md-6 d-flex align-items-start gap-2">
+                                            <i class="bi bi-caret-right-fill text-neon-purple mt-1"></i>
+                                            <span class="text-muted small" style="line-height: 1.6;">Designed normalized relational MySQL database schemas, optimized complex joins, and authored clean Eloquent queries.</span>
+                                        </li>
+                                        <li class="col-md-6 d-flex align-items-start gap-2">
+                                            <i class="bi bi-caret-right-fill text-neon-purple mt-1"></i>
+                                            <span class="text-muted small" style="line-height: 1.6;">Perform rigorous bug fixing, code refactoring, performance profiling, and git version control management within agile sprints.</span>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Competency Tags -->
+                                    <div class="d-flex flex-wrap gap-2 pt-3 border-top border-secondary border-opacity-25">
+                                        <span class="badge bg-dark border border-secondary text-light font-code">Laravel CRUD</span>
+                                        <span class="badge bg-dark border border-secondary text-light font-code">Authentication Guard</span>
+                                        <span class="badge bg-dark border border-secondary text-light font-code">Blade Engine</span>
+                                        <span class="badge bg-dark border border-secondary text-light font-code">Bootstrap UI</span>
+                                        <span class="badge bg-dark border border-secondary text-light font-code">REST API Development</span>
+                                        <span class="badge bg-dark border border-secondary text-light font-code">Database Normalization</span>
+                                        <span class="badge bg-dark border border-secondary text-light font-code">Bug Fixing</span>
+                                        <span class="badge bg-dark border border-secondary text-light font-code">Git Version Control</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Services Section -->
+        <section id="services" class="services-section position-relative">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                    <span class="section-badge">05 // OFFERINGS & SOLUTIONS</span>
+                    <h2 class="section-title">Specialized <span class="text-gradient">Backend Services</span></h2>
+                    <p class="text-muted mx-auto" style="max-width: 650px;">
+                        Providing high-impact backend engineering, modular API design, and seamless system integrations.
+                    </p>
+                </div>
+
+                <div class="row g-4 stagger-grid">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                        <div class="glass-card p-4 glow-border-blue h-100 d-flex flex-column justify-content-between interactive-card">
+                            <div>
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-4 mb-4 p-3 animate-float" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(0, 243, 255, 0.2); width: 65px; height: 65px;">
+                                    <i class="fa-brands fa-laravel text-danger fs-2"></i>
+                                </div>
+                                <h3 class="h5 fw-bold text-white font-heading mb-3">Laravel MVC Development</h3>
+                                <p class="text-muted small mb-4" style="line-height: 1.7;">Custom enterprise web applications built with scalable Laravel architecture, clean Eloquent models, secure route pipelines, and modular Blade engines.</p>
+                            </div>
+                            <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+                                <span class="font-code text-neon-blue small">Laravel 12 MVC</span>
+                                <a href="#contact" class="text-white small fw-bold text-decoration-none d-flex align-items-center gap-1 hover-glow">
+                                    <span>Discuss Project</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="glass-card p-4 glow-border-blue h-100 d-flex flex-column justify-content-between interactive-card">
+                            <div>
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-4 mb-4 p-3 animate-float" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(0, 243, 255, 0.2); width: 65px; height: 65px;">
+                                    <i class="bi bi-grid-1x2-fill text-info fs-2"></i>
+                                </div>
+                                <h3 class="h5 fw-bold text-white font-heading mb-3">Admin Panel Development</h3>
+                                <p class="text-muted small mb-4" style="line-height: 1.7;">High-performance bespoke administrative dashboards complete with statistical charts, dynamic CRUD management, role hierarchies, and audit trails.</p>
+                            </div>
+                            <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+                                <span class="font-code text-neon-blue small">Laravel 12 MVC</span>
+                                <a href="#contact" class="text-white small fw-bold text-decoration-none d-flex align-items-center gap-1 hover-glow">
+                                    <span>Discuss Project</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="glass-card p-4 glow-border-blue h-100 d-flex flex-column justify-content-between interactive-card">
+                            <div>
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-4 mb-4 p-3 animate-float" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(0, 243, 255, 0.2); width: 65px; height: 65px;">
+                                    <i class="bi bi-cloud-arrow-up-fill text-purple fs-2" style="color: #b026ff;"></i>
+                                </div>
+                                <h3 class="h5 fw-bold text-white font-heading mb-3">REST API Architecture</h3>
+                                <p class="text-muted small mb-4" style="line-height: 1.7;">Secure, RESTful JSON web service endpoints equipped with token authentication (Sanctum/JWT), rate limiting, and comprehensive API documentation.</p>
+                            </div>
+                            <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+                                <span class="font-code text-neon-blue small">Laravel 12 MVC</span>
+                                <a href="#contact" class="text-white small fw-bold text-decoration-none d-flex align-items-center gap-1 hover-glow">
+                                    <span>Discuss Project</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="glass-card p-4 glow-border-blue h-100 d-flex flex-column justify-content-between interactive-card">
+                            <div>
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-4 mb-4 p-3 animate-float" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(0, 243, 255, 0.2); width: 65px; height: 65px;">
+                                    <i class="bi bi-database-check text-success fs-2"></i>
+                                </div>
+                                <h3 class="h5 fw-bold text-white font-heading mb-3">Database Design & Optimization</h3>
+                                <p class="text-muted small mb-4" style="line-height: 1.7;">Relational database schema modeling, indexing strategies, slow query refactoring, migration blueprints, and automated seeders.</p>
+                            </div>
+                            <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+                                <span class="font-code text-neon-blue small">Laravel 12 MVC</span>
+                                <a href="#contact" class="text-white small fw-bold text-decoration-none d-flex align-items-center gap-1 hover-glow">
+                                    <span>Discuss Project</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="glass-card p-4 glow-border-blue h-100 d-flex flex-column justify-content-between interactive-card">
+                            <div>
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-4 mb-4 p-3 animate-float" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(0, 243, 255, 0.2); width: 65px; height: 65px;">
+                                    <i class="bi bi-bug-fill text-warning fs-2"></i>
+                                </div>
+                                <h3 class="h5 fw-bold text-white font-heading mb-3">Bug Fixing & Refactoring</h3>
+                                <p class="text-muted small mb-4" style="line-height: 1.7;">Rapid diagnosis of security bottlenecks, legacy code modernization, exception handling, and optimization of server memory footprint.</p>
+                            </div>
+                            <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+                                <span class="font-code text-neon-blue small">Laravel 12 MVC</span>
+                                <a href="#contact" class="text-white small fw-bold text-decoration-none d-flex align-items-center gap-1 hover-glow">
+                                    <span>Discuss Project</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="glass-card p-4 glow-border-blue h-100 d-flex flex-column justify-content-between interactive-card">
+                            <div>
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-4 mb-4 p-3 animate-float" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(0, 243, 255, 0.2); width: 65px; height: 65px;">
+                                    <i class="fa-brands fa-aws text-orange fs-2" style="color: #ff6b00;"></i>
+                                </div>
+                                <h3 class="h5 fw-bold text-white font-heading mb-3">Website Maintenance & Cloud Deploy</h3>
+                                <p class="text-muted small mb-4" style="line-height: 1.7;">Continuous system monitoring, server updates, security patching, and automated deployments on AWS EC2/S3 infrastructures.</p>
+                            </div>
+                            <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+                                <span class="font-code text-neon-blue small">Laravel 12 MVC</span>
+                                <a href="#contact" class="text-white small fw-bold text-decoration-none d-flex align-items-center gap-1 hover-glow">
+                                    <span>Discuss Project</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Certificates Section -->
+        <section id="certificates" class="certificates-section position-relative overflow-hidden">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                    <span class="section-badge">06 // RECOGNITION & ACCOLADES</span>
+                    <h2 class="section-title">Verified <span class="text-gradient">Certificates</span></h2>
+                    <p class="text-muted mx-auto" style="max-width: 650px;">
+                        Formal training and accredited certifications showcasing deep domain knowledge in PHP, Laravel, and Modern Web Architecture.
+                    </p>
+                </div>
+
+                <!-- Swiper Carousel Container -->
+                <div class="swiper certificates-swiper pb-5" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+                        <!-- Cert 0 -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-0 glow-border-purple h-100 d-flex flex-column overflow-hidden">
+                                <div class="position-relative overflow-hidden" style="height: 240px;">
+                                    <img src="https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=600&q=80" alt="Laravel MVC Architecture Mastery" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;">
+                                    <div class="position-absolute top-0 end-0 m-3 z-1">
+                                        <span class="badge bg-purple text-white font-code px-3 py-1">2024</span>
+                                    </div>
+                                    <div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 hover-overlay" style="transition: opacity 0.3s ease;">
+                                        <button type="button" class="btn btn-premium rounded-pill px-4 py-2" data-bs-toggle="modal" data-bs-target="#certModal0">
+                                            <i class="bi bi-zoom-in me-1"></i> Preview Certificate
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-4 d-flex flex-column flex-grow-1">
+                                    <span class="text-neon-cyan small font-code fw-semibold mb-1">Developer Certification Academy</span>
+                                    <h3 class="h5 fw-bold text-white font-heading mb-3">Laravel MVC Architecture Mastery</h3>
+                                    <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">Awarded for exceptional mastery of Laravel 12 architecture, RESTful API creation, and database modeling.</p>
+                                    <div class="pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                                        <span class="badge bg-dark border border-secondary text-muted font-code small">Verified Credentials</span>
+                                        <button type="button" class="btn btn-link text-neon-blue p-0 small text-decoration-none" data-bs-toggle="modal" data-bs-target="#certModal0">
+                                            View Credential <i class="bi bi-arrow-up-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cert 1 -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-0 glow-border-purple h-100 d-flex flex-column overflow-hidden">
+                                <div class="position-relative overflow-hidden" style="height: 240px;">
+                                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="PHP 8.3 Advanced Backend Programming" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;">
+                                    <div class="position-absolute top-0 end-0 m-3 z-1">
+                                        <span class="badge bg-purple text-white font-code px-3 py-1">2024</span>
+                                    </div>
+                                    <div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 hover-overlay" style="transition: opacity 0.3s ease;">
+                                        <button type="button" class="btn btn-premium rounded-pill px-4 py-2" data-bs-toggle="modal" data-bs-target="#certModal1">
+                                            <i class="bi bi-zoom-in me-1"></i> Preview Certificate
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-4 d-flex flex-column flex-grow-1">
+                                    <span class="text-neon-cyan small font-code fw-semibold mb-1">Backend Engineering Institute</span>
+                                    <h3 class="h5 fw-bold text-white font-heading mb-3">PHP 8.3 Advanced Backend Programming</h3>
+                                    <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">Certified in modern PHP design patterns, strong typing, asynchronous processes, and memory optimization.</p>
+                                    <div class="pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                                        <span class="badge bg-dark border border-secondary text-muted font-code small">Verified Credentials</span>
+                                        <button type="button" class="btn btn-link text-neon-blue p-0 small text-decoration-none" data-bs-toggle="modal" data-bs-target="#certModal1">
+                                            View Credential <i class="bi bi-arrow-up-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cert 2 -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-0 glow-border-purple h-100 d-flex flex-column overflow-hidden">
+                                <div class="position-relative overflow-hidden" style="height: 240px;">
+                                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" alt="Full Stack Responsive UI Design" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;">
+                                    <div class="position-absolute top-0 end-0 m-3 z-1">
+                                        <span class="badge bg-purple text-white font-code px-3 py-1">2023</span>
+                                    </div>
+                                    <div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 hover-overlay" style="transition: opacity 0.3s ease;">
+                                        <button type="button" class="btn btn-premium rounded-pill px-4 py-2" data-bs-toggle="modal" data-bs-target="#certModal2">
+                                            <i class="bi bi-zoom-in me-1"></i> Preview Certificate
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-4 d-flex flex-column flex-grow-1">
+                                    <span class="text-neon-cyan small font-code fw-semibold mb-1">Web Design Council</span>
+                                    <h3 class="h5 fw-bold text-white font-heading mb-3">Full Stack Responsive UI Design</h3>
+                                    <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">Recognized for creating highly responsive, accessible, and interactive user interfaces using Bootstrap 5 and modern JS.</p>
+                                    <div class="pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                                        <span class="badge bg-dark border border-secondary text-muted font-code small">Verified Credentials</span>
+                                        <button type="button" class="btn btn-link text-neon-blue p-0 small text-decoration-none" data-bs-toggle="modal" data-bs-target="#certModal2">
+                                            View Credential <i class="bi bi-arrow-up-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pagination dots -->
+                    <div class="swiper-pagination position-relative mt-4"></div>
+                </div>
+
+                <!-- Lightbox Modals for Certificates -->
+                <div class="modal fade" id="certModal0" tabindex="-1" aria-labelledby="certModalLabel0" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content glass-card glow-border-blue text-white border-0 p-2" style="background: rgba(8, 8, 12, 0.98) !important;">
+                            <div class="modal-header border-bottom border-secondary pb-3">
+                                <h5 class="modal-title font-heading fw-bold d-flex align-items-center gap-2" id="certModalLabel0">
+                                    <i class="bi bi-patch-check-fill text-neon-cyan"></i> Laravel MVC Architecture Mastery
+                                </h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center p-4">
+                                <img src="https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded border border-secondary shadow-lg mb-4" alt="Laravel MVC Architecture Mastery">
+                                <h6 class="text-neon-blue font-heading">Developer Certification Academy</h6>
+                                <p class="text-muted small mx-auto" style="max-width: 600px;">Awarded for exceptional mastery of Laravel 12 architecture, RESTful API creation, and database modeling.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="certModal1" tabindex="-1" aria-labelledby="certModalLabel1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content glass-card glow-border-blue text-white border-0 p-2" style="background: rgba(8, 8, 12, 0.98) !important;">
+                            <div class="modal-header border-bottom border-secondary pb-3">
+                                <h5 class="modal-title font-heading fw-bold d-flex align-items-center gap-2" id="certModalLabel1">
+                                    <i class="bi bi-patch-check-fill text-neon-cyan"></i> PHP 8.3 Advanced Backend Programming
+                                </h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center p-4">
+                                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded border border-secondary shadow-lg mb-4" alt="PHP 8.3 Advanced Backend Programming">
+                                <h6 class="text-neon-blue font-heading">Backend Engineering Institute</h6>
+                                <p class="text-muted small mx-auto" style="max-width: 600px;">Certified in modern PHP design patterns, strong typing, asynchronous processes, and memory optimization.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="certModal2" tabindex="-1" aria-labelledby="certModalLabel2" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content glass-card glow-border-blue text-white border-0 p-2" style="background: rgba(8, 8, 12, 0.98) !important;">
+                            <div class="modal-header border-bottom border-secondary pb-3">
+                                <h5 class="modal-title font-heading fw-bold d-flex align-items-center gap-2" id="certModalLabel2">
+                                    <i class="bi bi-patch-check-fill text-neon-cyan"></i> Full Stack Responsive UI Design
+                                </h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center p-4">
+                                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded border border-secondary shadow-lg mb-4" alt="Full Stack Responsive UI Design">
+                                <h6 class="text-neon-blue font-heading">Web Design Council</h6>
+                                <p class="text-muted small mx-auto" style="max-width: 600px;">Recognized for creating highly responsive, accessible, and interactive user interfaces using Bootstrap 5 and modern JS.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 8. Contact Section -->
+        <section id="contact" class="contact-section position-relative pb-5">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                    <span class="section-badge">07 // LET'S COLLABORATE</span>
+                    <h2 class="section-title">Initiate <span class="text-gradient">Communication</span></h2>
+                    <p class="text-muted mx-auto" style="max-width: 650px;">
+                        Ready to build an award-winning web application or optimize your backend infrastructure? Drop me a message below.
+                    </p>
+                </div>
+
+                <div class="row g-5 align-items-stretch">
+                    <!-- Contact Info Cards & Social Matrix -->
+                    <div class="col-lg-5" data-aos="fade-right">
+                        <div class="d-flex flex-column gap-4 h-100 justify-content-between">
+                            <div class="glass-card p-4 glow-border-blue">
+                                <h3 class="h4 font-heading fw-bold text-white mb-3 d-flex align-items-center gap-2">
+                                    <i class="bi bi-chat-dots-fill text-neon-cyan"></i> Direct Contact Matrix
+                                </h3>
+                                <p class="text-muted small mb-4">
+                                    Whether you have an enterprise project, full-time opportunity, or technical inquiry, I reply within 12 hours.
+                                </p>
+
+                                <div class="d-flex flex-column gap-3">
+                                    <a href="mailto:arpitvadhiyari@gmail.com" class="d-flex align-items-center gap-3 p-3 rounded-4 glass-card text-decoration-none border-secondary border-opacity-50">
+                                        <div class="rounded-circle d-flex align-items-center justify-content-center bg-dark text-neon-blue" style="width: 45px; height: 45px; min-width: 45px;">
+                                            <i class="bi bi-envelope-at-fill fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-muted small d-block">Electronic Mail</span>
+                                            <strong class="text-white font-code small">arpitvadhiyari@gmail.com</strong>
+                                        </div>
+                                    </a>
+
+                                    <a href="https://wa.me/910000000000" target="_blank" class="d-flex align-items-center gap-3 p-3 rounded-4 glass-card text-decoration-none border-secondary border-opacity-50">
+                                        <div class="rounded-circle d-flex align-items-center justify-content-center bg-dark text-success" style="width: 45px; height: 45px; min-width: 45px;">
+                                            <i class="fa-brands fa-whatsapp fs-4"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-muted small d-block">Instant WhatsApp</span>
+                                            <strong class="text-white font-code small">+91 Developer Direct</strong>
+                                        </div>
+                                    </a>
+
+                                    <div class="d-flex align-items-center gap-3 p-3 rounded-4 glass-card border-secondary border-opacity-50">
+                                        <div class="rounded-circle d-flex align-items-center justify-content-center bg-dark text-neon-purple" style="width: 45px; height: 45px; min-width: 45px;">
+                                            <i class="bi bi-geo-alt-fill fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-muted small d-block">Development Lab</span>
+                                            <strong class="text-white font-code small">Gujarat, India (Remote Available)</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Google Map Box -->
+                            <div class="glass-card p-2 glow-border-purple position-relative overflow-hidden" style="height: 180px;">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d238133.15238148815!2d72.68220795!3d21.1591425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0xfe4558290938b042!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                                    width="100%" height="100%" style="border:0; border-radius: 16px; filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(85%);" 
+                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                                <div class="position-absolute bottom-0 start-0 m-3 px-3 py-1 rounded bg-dark border border-info small font-code text-neon-cyan">
+                                    <i class="bi bi-pin-map-fill me-1"></i> HQ Coordinates
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Container -->
+                    <div class="col-lg-7" data-aos="fade-left">
+                        <div class="glass-card p-5 glow-border-blue h-100">
+                            <h3 class="h4 font-heading fw-bold text-white mb-4">Send an Inquiry Endpoint</h3>
+
+                            <form id="contactForm">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control custom-input" id="nameInput" name="name" placeholder="Your Name" required>
+                                            <label for="nameInput" class="text-muted small"><i class="bi bi-person me-1"></i> Full Name</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control custom-input" id="emailInput" name="email" placeholder="name@example.com" required>
+                                            <label for="emailInput" class="text-muted small"><i class="bi bi-envelope me-1"></i> Email Address</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control custom-input" id="subjectInput" name="subject" placeholder="Project Subject" required>
+                                            <label for="subjectInput" class="text-muted small"><i class="bi bi-tag me-1"></i> Project Subject / Inquiry Type</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control custom-input" id="messageInput" name="message" placeholder="Leave a comment here" style="height: 160px" required></textarea>
+                                            <label for="messageInput" class="text-muted small"><i class="bi bi-chat-text me-1"></i> Project Specifications & Requirements</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 d-flex justify-content-between align-items-center pt-2">
+                                        <span class="small text-muted font-code"><i class="bi bi-shield-check text-neon-blue"></i> Standalone Static Form Validation</span>
+                                        <button type="submit" class="btn btn-premium px-5 py-3 d-flex align-items-center gap-2">
+                                            <span>Transmit Message</span>
+                                            <i class="bi bi-send-fill"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .project-item .position-relative:hover img { transform: scale(1.08); }
+            .project-item .position-relative:hover .hover-overlay { opacity: 1 !important; }
+            .swiper-slide .position-relative:hover img { transform: scale(1.06); }
+            .swiper-slide .position-relative:hover .hover-overlay { opacity: 1 !important; }
+            .swiper-pagination-bullet { background: rgba(255,255,255,0.3); width: 10px; height: 10px; opacity: 1; }
+            .swiper-pagination-bullet-active { background: var(--neon-blue); width: 25px; border-radius: 5px; box-shadow: 0 0 10px var(--neon-blue); }
+            .custom-input {
+                background: rgba(255, 255, 255, 0.04) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                color: #fff !important;
+                border-radius: 12px !important;
+                transition: all 0.3s ease;
+            }
+            .custom-input:focus {
+                background: rgba(255, 255, 255, 0.08) !important;
+                border-color: var(--neon-blue) !important;
+                box-shadow: 0 0 15px rgba(0, 243, 255, 0.25) !important;
+            }
+            .form-floating label {
+                color: #9ca3af;
+            }
+        </style>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="position-relative pt-5 pb-4 overflow-hidden" style="background: rgba(5, 5, 8, 0.9);">
+        <!-- Animated Gradient Top Line -->
+        <div class="footer-gradient-line"></div>
+
+        <div class="container pt-4">
+            <div class="row gy-4 align-items-center justify-content-between">
+                <div class="col-lg-5 text-center text-lg-start">
+                    <a class="d-inline-flex align-items-center gap-2 mb-3 text-white text-decoration-none" href="#hero">
+                        <div class="d-flex align-items-center justify-content-center rounded px-2 py-1 glow-border-blue" style="background: rgba(0, 243, 255, 0.1);">
+                            <span class="font-heading fw-bold text-neon-blue fs-5">AV</span>
+                        </div>
+                        <span class="font-heading fw-bold tracking-tight text-white fs-4">ARPIT VADHIYARI</span>
+                    </a>
+                    <p class="text-muted mb-0 small pe-lg-4">
+                        Enterprise PHP Laravel Developer crafting secure MVC architectures, high-performance web systems, and dynamic user interfaces inspired by Apple, Vercel, and Linear.
+                    </p>
+                </div>
+
+                <div class="col-lg-3 text-center">
+                    <h6 class="text-white text-uppercase font-heading tracking-widest mb-3 small">Social Connect</h6>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://github.com/arpit294" target="_blank" class="glass-card p-2 px-3 text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;"><i class="fa-brands fa-github fs-5"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="glass-card p-2 px-3 text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;"><i class="fa-brands fa-linkedin-in fs-5"></i></a>
+                        <a href="mailto:arpitvadhiyari@gmail.com" class="glass-card p-2 px-3 text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;"><i class="bi bi-envelope-fill fs-5"></i></a>
+                        <a href="https://wa.me/910000000000" target="_blank" class="glass-card p-2 px-3 text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;"><i class="fa-brands fa-whatsapp fs-5 text-neon-cyan"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 text-center text-lg-end">
+                    <!-- Back to top button -->
+                    <button id="backToTopBtn" class="btn btn-outline-neon rounded-pill px-4 py-2 small mb-3 shadow-sm" style="opacity: 0; pointer-events: none; transition: all 0.3s ease;">
+                        <i class="bi bi-arrow-up me-1"></i> Back to Top
+                    </button>
+                    <p class="text-muted small mb-0">&copy; <script>document.write(new Date().getFullYear())</script> Arpit Vadhiyari. All rights reserved.</p>
+                    <span class="text-neon-blue small" style="font-size: 0.75rem;">Pure HTML5, CSS3 & JavaScript Engine</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for Form Success -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-4" style="z-index: 1080;">
+        <div id="successToast" class="toast glass-card glow-border-blue text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex align-items-center justify-content-between p-2">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-check-circle-fill text-neon-cyan fs-4"></i>
+                    <strong class="me-auto text-neon-blue font-heading">Success!</strong>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body pt-0 text-muted" id="toastBody">
+                Thank you! Your inquiry has been sent successfully.
+            </div>
+        </div>
+    </div>
+
+    <!-- CDNs: Bootstrap JS, GSAP, ScrollTrigger, Typed.js, Swiper, AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Custom Application Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/gsap.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

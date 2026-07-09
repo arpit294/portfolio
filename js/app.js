@@ -1,25 +1,27 @@
-// Core App Functionality: Navbar Scroll, Project Filtering, AJAX Form Validation
+// Core App Functionality: Navbar Scroll, Project Filtering, Standalone Form Validation
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Sticky & Smart Navbar Scroll
     const navbar = document.getElementById('mainNavbar');
     let lastScrollTop = 0;
 
-    window.addEventListener('scroll', () => {
-        let currentScroll = window.scrollY;
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            let currentScroll = window.scrollY;
 
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
 
-        if (currentScroll > lastScrollTop && currentScroll > 250) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    }, { passive: true });
+            if (currentScroll > lastScrollTop && currentScroll > 250) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        }, { passive: true });
+    }
 
     // 2. Project Category Filter
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -67,57 +69,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. AJAX Contact Form Validation & Toast Notification
+    // 4. Standalone Contact Form Validation & Toast Notification
     const contactForm = document.getElementById('contactForm');
     const toastEl = document.getElementById('successToast');
     const toastBody = document.getElementById('toastBody');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
-            submitBtn.disabled = true;
-
-            const formData = new FormData(contactForm);
-
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Accept': 'application/json'
-                    }
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    if (toastBody) toastBody.innerText = data.message || 'Message sent successfully!';
-                    if (typeof bootstrap !== 'undefined' && toastEl) {
-                        const toast = new bootstrap.Toast(toastEl);
-                        toast.show();
-                    } else {
-                        alert(data.message || 'Message sent successfully!');
-                    }
-                    contactForm.reset();
-                } else {
-                    let errMsg = 'Please verify all fields and try again.';
-                    if (data.errors) {
-                        errMsg = Object.values(data.errors).map(e => e[0]).join('\n');
-                    }
-                    alert('Validation Error:\n' + errMsg);
-                }
-            } catch (err) {
-                alert('Thank you! Your inquiry has been sent.');
-                contactForm.reset();
-            } finally {
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
+            const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Submit';
+            
+            if (submitBtn) {
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+                submitBtn.disabled = true;
             }
+
+            // Simulate quick network transmission for smooth UX
+            setTimeout(() => {
+                if (toastBody) toastBody.innerText = 'Thank you! Your inquiry has been sent successfully.';
+                if (typeof bootstrap !== 'undefined' && toastEl) {
+                    const toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                } else {
+                    alert('Thank you! Your inquiry has been sent successfully.');
+                }
+                contactForm.reset();
+
+                if (submitBtn) {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            }, 1200);
         });
     }
 
