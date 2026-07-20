@@ -427,3 +427,110 @@ section {
     box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
     z-index: 2;
 }
+
+/* =========================================
+   Mobile Responsiveness & Polish
+   ========================================= */
+@media (max-width: 991px) {
+    /* Adjust Hero for tablet/mobile */
+    .hero-bg-text {
+        font-size: 16vw;
+        letter-spacing: 10px;
+    }
+    .hero-title {
+        font-size: 3rem !important;
+    }
+    .glass-card.p-5 {
+        padding: 2rem !important; /* Scale down padding */
+    }
+    /* Make code badge fit */
+    .floating-code-badge {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Prevent horizontal overflow strictly */
+    body, html {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    /* Adjust massive section padding */
+    section {
+        padding: 60px 0;
+    }
+
+    /* Typography scale-down */
+    .hero-title {
+        font-size: 2.2rem !important;
+    }
+    .hero-bg-text {
+        font-size: 18vw;
+        letter-spacing: 5px;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .display-5 {
+        font-size: 2rem !important;
+    }
+    
+    /* Optimize glass cards for mobile */
+    .glass-card.p-5 {
+        padding: 1.5rem !important; /* Overrides Bootstrap p-5 (48px) to p-3 (24px) */
+    }
+    .glass-card.p-4 {
+        padding: 1.25rem !important;
+    }
+    
+    /* Hero Action Buttons */
+    .hero-section .d-flex.gap-3 {
+        flex-direction: column;
+        width: 100%;
+    }
+    .hero-section .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Mini Tech Stack */
+    .hero-section .mt-5.pt-3 {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 15px !important;
+    }
+
+    /* Contact forms on mobile */
+    .contact-card, #contactForm {
+        padding: 1rem !important;
+    }
+
+    /* Timeline spacing fix */
+    .timeline {
+        padding-left: 25px;
+    }
+    .timeline::before {
+        left: 5px;
+    }
+    .timeline-dot {
+        left: -28px !important;
+        width: 24px !important;
+        height: 24px !important;
+        top: 6px !important;
+    }
+    .timeline-dot i {
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .unique-name {
+        font-size: 1em;
+    }
+    .section-badge {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+    }
+}
