@@ -585,3 +585,55 @@ section {
         font-size: 26px;
     }
 }
+
+/* =========================================
+   Floating LinkedIn Widget
+   ========================================= */
+.linkedin-float-widget {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0A66C2, #004182);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    box-shadow: 0 4px 20px rgba(10, 102, 194, 0.4);
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: linkedin-float-pulse 2s infinite;
+    animation-delay: 1s; /* Offset from WhatsApp pulse */
+}
+
+.linkedin-float-widget:hover {
+    transform: scale(1.1) rotate(5deg);
+    color: white;
+    box-shadow: 0 6px 25px rgba(10, 102, 194, 0.6);
+}
+
+@keyframes linkedin-float-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(10, 102, 194, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(10, 102, 194, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .linkedin-float-widget {
+        bottom: 80px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
