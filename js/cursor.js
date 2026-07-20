@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function renderRing() {
-        ringX += (mouseX - ringX) * 0.15;
-        ringY += (mouseY - ringY) * 0.15;
+        // Increased from 0.15 to 0.6 to remove the "late reply" lag while keeping it smooth
+        ringX += (mouseX - ringX) * 0.6;
+        ringY += (mouseY - ringY) * 0.6;
         cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
         requestAnimationFrame(renderRing);
     }

@@ -17,24 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         initHeroAnimations();
     }
 
-    // 2. Typed.js Initialization
-    if (typeof Typed !== 'undefined') {
-        const typedEl = document.getElementById('typed-text');
-        if (typedEl) {
-            new Typed('#typed-text', {
-                strings: [
-                    'PHP Laravel Developer',
-                    'Backend System Architect',
-                    'RESTful API Specialist',
-                    'Cloud Engineer (Learning)'
-                ],
-                typeSpeed: 50,
-                backSpeed: 30,
-                backDelay: 2000,
-                loop: true
-            });
-        }
-    }
+    // 2. Typed.js Initialization (Removed - replaced with static subtitle)
+    // if (typeof Typed !== 'undefined') { ... }
 
     // 3. AOS Library
     if (typeof AOS !== 'undefined') {
@@ -50,13 +34,44 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof gsap === 'undefined') return;
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero text reveal
-        gsap.from('.hero-content > *', {
-            y: 50,
+        // SplitType Cinematic Text Reveals
+        if (typeof SplitType !== 'undefined') {
+            const splitTitles = new SplitType('.font-heading:not(#typed-text)', { types: 'words, chars' });
+            gsap.from(splitTitles.chars, {
+                opacity: 0,
+                y: 50,
+                rotateX: -90,
+                stagger: 0.02,
+                duration: 1.2,
+                ease: 'power4.out',
+                scrollTrigger: {
+                    trigger: '.hero-section',
+                    start: 'top 80%',
+                }
+            });
+            
+            // Add scroll trigger for other titles
+            document.querySelectorAll('section .font-heading').forEach(title => {
+                const split = new SplitType(title, { types: 'chars' });
+                gsap.from(split.chars, {
+                    opacity: 0,
+                    scale: 2,
+                    stagger: 0.03,
+                    duration: 1,
+                    ease: 'expo.out',
+                    scrollTrigger: { trigger: title, start: 'top 85%' }
+                });
+            });
+        }
+
+        // Hero content reveal (non-text)
+        gsap.from('.hero-content p, .hero-content .d-flex, .unique-name', {
+            y: 30,
             opacity: 0,
-            duration: 1,
-            stagger: 0.15,
-            ease: 'power3.out'
+            duration: 1.5,
+            stagger: 0.2,
+            ease: 'power3.out',
+            delay: 0.5
         });
 
         gsap.from('.hero-illustration', {
@@ -104,18 +119,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Staggered glass cards reveal on scroll
+        // Staggered glass cards reveal on scroll with extreme 3D transforms
+        // (Commented out to prevent opacity: 0 glitch on scroll)
+        /*
         gsap.utils.toArray('.stagger-grid').forEach(grid => {
             const cards = grid.querySelectorAll('.glass-card');
             gsap.from(cards, {
-                y: 60,
+                y: 100,
+                z: -200,
+                rotateX: 15,
                 opacity: 0,
-                duration: 0.8,
-                stagger: 0.12,
-                ease: 'power3.out',
+                duration: 1.2,
+                stagger: 0.15,
+                ease: 'power4.out',
                 scrollTrigger: {
                     trigger: grid,
-                    start: 'top 80%'
+                    start: 'top 85%'
+                }
+            });
+        });
+        */
+        
+        // Deep Parallax for all sections
+        gsap.utils.toArray('section').forEach(sec => {
+            gsap.from(sec, {
+                y: 50,
+                opacity: 0.5,
+                duration: 1.5,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: sec,
+                    start: 'top 95%',
+                    end: 'top 20%',
+                    scrub: 1
                 }
             });
         });

@@ -1,5 +1,17 @@
 // Core App Functionality: Navbar Scroll, Project Filtering, Standalone Form Validation
 document.addEventListener('DOMContentLoaded', () => {
+
+    // 0.1 Initialize Vanilla Tilt 3D Effects
+    if (typeof VanillaTilt !== 'undefined') {
+        const tiltElements = document.querySelectorAll('.project-item .glass-card, .services-section .glass-card');
+        VanillaTilt.init(tiltElements, {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2,
+        });
+    }
+
     // 1. Sticky & Smart Navbar Scroll
     const navbar = document.getElementById('mainNavbar');
     let lastScrollTop = 0;
@@ -69,13 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Standalone Contact Form Validation & Toast Notification
+    // 4. Standalone Contact Form via Web3Forms
     const contactForm = document.getElementById('contactForm');
     const toastEl = document.getElementById('successToast');
     const toastBody = document.getElementById('toastBody');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -86,22 +98,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = true;
             }
 
-            // Simulate quick network transmission for smooth UX
-            setTimeout(() => {
-                if (toastBody) toastBody.innerText = 'Thank you! Your inquiry has been sent successfully.';
+            const formData = new FormData(contactForm);
+            
+            try {
+                // Check if an access key is actually provided for Web3Forms
+                const accessKey = formData.get('access_key');
+                if (!accessKey || accessKey.includes('YOUR_ACCESS_KEY')) {
+                    throw new Error('Please configure a valid Web3Forms access key in index.html to receive emails.');
+                }
+
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+
+                if (data.success) {
+                    if (toastBody) toastBody.innerText = 'Thank you! Your inquiry has been sent successfully.';
+                    if (typeof bootstrap !== 'undefined' && toastEl) {
+                        const toast = new bootstrap.Toast(toastEl);
+                        toast.show();
+                    }
+                    contactForm.reset();
+                } else {
+                    throw new Error(data.message || 'Submission failed.');
+                }
+            } catch (error) {
+                if (toastBody) toastBody.innerText = error.message;
                 if (typeof bootstrap !== 'undefined' && toastEl) {
                     const toast = new bootstrap.Toast(toastEl);
                     toast.show();
                 } else {
-                    alert('Thank you! Your inquiry has been sent successfully.');
+                    alert(error.message);
                 }
-                contactForm.reset();
-
+            } finally {
                 if (submitBtn) {
                     submitBtn.innerHTML = originalBtnText;
                     submitBtn.disabled = false;
                 }
-            }, 1200);
+            }
         });
     }
 
@@ -121,4 +157,25 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+
+    // 6. Magnetic Buttons (Cinematic interaction)
+    const magneticButtons = document.querySelectorAll('.btn-premium, .filter-btn');
+    
+    magneticButtons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const h = rect.width / 2;
+            const v = rect.height / 2;
+            const x = e.clientX - rect.left - h;
+            const y = e.clientY - rect.top - v;
+
+            // Move the button slightly towards the cursor
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            // Spring back to center
+            btn.style.transform = `translate(0px, 0px)`;
+        });
+    });
 });
