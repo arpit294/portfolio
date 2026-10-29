@@ -1,4 +1,4 @@
-name: Deploy Website
+name: Deploy Website to EC2 (Nginx)
 
 on:
   push:
@@ -10,16 +10,17 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy Website
+      - name: Deploy to Nginx
         run: |
           sudo rsync -av --delete \
-            --exclude='.git' \
-            --exclude='.github' \
+            --exclude='.git/' \
+            --exclude='.github/' \
             ./ /var/www/html/
 
-      - name: Restart Nginx
+      - name: Verify Nginx
         run: |
-          sudo systemctl restart nginx
+          sudo nginx -t
+          sudo systemctl reload nginx
